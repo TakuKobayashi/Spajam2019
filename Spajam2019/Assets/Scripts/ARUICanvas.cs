@@ -20,8 +20,7 @@ public class ARUICanvas : MonoBehaviour
 
     private void OnLocationLoaded(Compass compass, LocationService locationService)
     {
-        debugText.text = "aaaaaaaa";
-        /*
+//        debugText.text = "aaaaaaaa";
         debugText.text = string.Format("headingAccuracy:{0}\n magneticHeading:{1}\n rawVector:{2}\n timestamp:{3}\n trueHeading:{4}\n altitude:{5}\n latitude:{6}\n longitude:{7}\n horizontalAccuracy:{8}\n verticalAccuracy:{9}\n timestamp:{10}\n status:{11}",
             compass.headingAccuracy,
             compass.magneticHeading,
@@ -36,6 +35,5 @@ public class ARUICanvas : MonoBehaviour
             locationService.lastData.timestamp,
             locationService.status.ToString()
             );
-            */
     }
 }

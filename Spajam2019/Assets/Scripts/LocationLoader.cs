@@ -20,7 +20,7 @@ public class LocationLoader : SingletonBehaviour<LocationLoader>
         if (OnLoadLocation != null) OnLoadLocation(Input.compass, Input.location);
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         Input.compass.enabled = false;
         Input.location.Stop();
