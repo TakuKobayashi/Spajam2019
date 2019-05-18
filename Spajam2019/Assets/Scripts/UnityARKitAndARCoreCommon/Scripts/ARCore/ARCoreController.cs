@@ -67,6 +67,8 @@ namespace ARKitAndARCoreCommon
         /// </summary>
         private bool m_IsQuitting = false;
 
+        private HashSet<DetectedPlane> detectedPlanes = new HashSet<DetectedPlane>(); 
+
         protected override void Awake(){
             base.Awake();
             Util.InstantiateTo(this.gameObject, EnvironmentalLightPrefab);
@@ -89,32 +91,24 @@ namespace ARKitAndARCoreCommon
             Session.GetTrackables<DetectedPlane>(m_NewPlanes, TrackableQueryFilter.New);
             for (int i = 0; i < m_NewPlanes.Count; i++)
             {
+                DetectedPlane plane = m_NewPlanes[i];
                 // Instantiate a plane visualization prefab and set it to track the new plane. The transform is set to
                 // the origin with an identity rotation since the mesh for our prefab is updated in Unity World
                 // coordinates.
                 GameObject planeObject = Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
-                planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+                planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(plane);
 
-                Pose pose = m_NewPlanes[i].CenterPose;
-                if(m_NewPlanes[i].PlaneType != DetectedPlaneType.Vertical)
+                if (detectedPlanes.Contains(plane)) continue;
+                Pose pose = plane.CenterPose;
+                if (plane.PlaneType != DetectedPlaneType.Vertical)
                 {
+                    detectedPlanes.Add(plane);
                     this.AppearNewsPaper(CreateAnchor(pose.position, pose.rotation));
                 }
             }
 
             // Hide snackbar when currently tracking at least one plane.
             Session.GetTrackables<DetectedPlane>(m_AllPlanes);
-            bool showSearchingUI = true;
-            for (int i = 0; i < m_AllPlanes.Count; i++)
-            {
-                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
-                {
-                    showSearchingUI = false;
-                    break;
-                }
-            }
-
-            //SearchingForPlaneUI.SetActive(showSearchingUI);
 
             // If the player has not touched the screen, we are done with this update.
             Touch touch;
