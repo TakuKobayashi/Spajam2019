@@ -20,6 +20,7 @@
     "app-root-path": "^2.2.1",
     "aws-sdk": "^2.458.0",
     "axios": "^0.18.0",
+    "twitter": "^1.7.1",
     "underscore": "^1.9.1",
     "url": "^0.11.0",
     "uuid": "^3.3.2"
