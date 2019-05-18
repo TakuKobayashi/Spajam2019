@@ -7,7 +7,7 @@ public class GlobalController : SingletonBehaviour<GlobalController>
 {
     [SerializeField] GameObject locationLoaderPrefab;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Util.InstantiateTo(this.gameObject, locationLoaderPrefab);
     }
