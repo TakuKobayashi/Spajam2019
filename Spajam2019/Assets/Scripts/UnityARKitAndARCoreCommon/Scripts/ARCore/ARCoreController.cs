@@ -94,6 +94,12 @@ namespace ARKitAndARCoreCommon
                 // coordinates.
                 GameObject planeObject = Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
                 planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+
+                Pose pose = m_NewPlanes[i].CenterPose;
+                if(m_NewPlanes[i].PlaneType != DetectedPlaneType.Vertical)
+                {
+                    this.AppearNewsPaper(CreateAnchor(pose.position, pose.rotation));
+                }
             }
 
             // Hide snackbar when currently tracking at least one plane.
