@@ -109,6 +109,7 @@ MonoBehaviour:
   newsPaperText: {fileID: 1562525689170145761}
   defaultScale: {x: 0.05, y: 0.1, z: 0.1}
   splitByteCount: 15
+  adjustPosition: {x: 0, y: 0, z: -4}
 --- !u!1 &7576379432682003340
 GameObject:
   m_ObjectHideFlags: 0

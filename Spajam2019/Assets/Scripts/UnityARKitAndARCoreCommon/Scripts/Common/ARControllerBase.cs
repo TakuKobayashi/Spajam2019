@@ -50,6 +50,7 @@ namespace ARKitAndARCoreCommon
             {
                 appearingNewsPaper = Util.InstantiateTo<NewsPaper>(root, newsPaperPrefab);
                 appearingNewsPaper.Scaleing();
+                appearingNewsPaper.AdjustPosition(root.transform.position);
             }
         }
 

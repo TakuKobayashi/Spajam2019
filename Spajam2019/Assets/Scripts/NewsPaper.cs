@@ -8,6 +8,7 @@ public class NewsPaper : MonoBehaviour
     [SerializeField] private TextMesh newsPaperText;
     [SerializeField] private Vector3 defaultScale;
     [SerializeField] private int splitByteCount;
+    [SerializeField] private Vector3 adjustPosition;
 
     public void Scaleing()
     {
@@ -34,6 +35,13 @@ public class NewsPaper : MonoBehaviour
             builder.Append(word);
         }
         newsPaperText.text = builder.ToString();
+    }
+
+    public void AdjustPosition(Vector3 rootPosition)
+    {
+        Transform cameraTransform = Camera.main.transform;
+        this.transform.position = rootPosition - adjustPosition;
+        this.transform.LookAt(new Vector3(cameraTransform.position.x, this.transform.position.y, cameraTransform.position.z));
     }
 
     void Start()
