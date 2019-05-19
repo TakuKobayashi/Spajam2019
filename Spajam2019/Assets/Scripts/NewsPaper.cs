@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public class NewsPaper : MonoBehaviour
 {
     [SerializeField] private TextMesh newsPaperText;
     [SerializeField] private Vector3 defaultScale;
     [SerializeField] private int splitByteCount;
+    [SerializeField] private float touchRange;
+    [SerializeField] private float moveSecond;
     [SerializeField] private Vector3 adjustPosition;
+
+    private float nearingSecond = 0f;
 
     public void Scaleing()
     {
@@ -51,6 +56,15 @@ public class NewsPaper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Transform cameraTransform = Camera.main.transform;
+        if((cameraTransform.transform.position - this.transform.position).sqrMagnitude < touchRange)
+        {
+            nearingSecond += Time.deltaTime;
+            if (moveSecond < nearingSecond)
+            {
+                GlobalController.Instance.CurrentMainMenuPage = 5;
+                SceneManager.LoadScene("MainScene");
+            }
+        }
     }
 }
