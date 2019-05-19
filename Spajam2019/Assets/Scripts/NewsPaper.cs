@@ -62,7 +62,7 @@ public class NewsPaper : MonoBehaviour
             nearingSecond += Time.deltaTime;
             if (moveSecond < nearingSecond)
             {
-                GlobalController.Instance.CurrentMainMenuPage = 5;
+//                StockManager.Instance.CurrentMainMenuPage = 5;
                 SceneManager.LoadScene("MainScene");
             }
         }

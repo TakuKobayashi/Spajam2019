@@ -9,7 +9,7 @@ public class ARUICanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LocationLoader.Instance.OnLoadLocation = OnLocationLoaded;
+        //LocationLoader.Instance.OnLoadLocation = OnLocationLoaded;
     }
 
     // Update is called once per frame
@@ -20,7 +20,6 @@ public class ARUICanvas : MonoBehaviour
 
     private void OnLocationLoaded(Compass compass, LocationService locationService)
     {
-//        debugText.text = "aaaaaaaa";
         debugText.text = string.Format("headingAccuracy:{0}\n magneticHeading:{1}\n rawVector:{2}\n timestamp:{3}\n trueHeading:{4}\n altitude:{5}\n latitude:{6}\n longitude:{7}\n horizontalAccuracy:{8}\n verticalAccuracy:{9}\n timestamp:{10}\n status:{11}",
             compass.headingAccuracy,
             compass.magneticHeading,

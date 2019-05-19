@@ -19,13 +19,17 @@ public class MainUIController : MonoBehaviour
 
     public void OnMovePageButtonClicked(int page)
     {
-        int currentPage = GlobalController.Instance.CurrentMainMenuPage;
+        int currentPage = PlayerPrefs.GetInt("page", 0);
         currentPage = currentPage + page;
         currentPage = Mathf.Max(currentPage, 0);
-        currentPage = Mathf.Min(currentPage, uipages.Count);
-        GlobalController.Instance.CurrentMainMenuPage = currentPage;
+        if(currentPage >= uipages.Count)
+        {
+            currentPage = 0;
+        }
+        PlayerPrefs.SetInt("page", currentPage);
+        PlayerPrefs.Save();
 
-        if (currentPage == 5)
+        if (currentPage == 4)
         {
             SceneManager.LoadScene("ARScene");
         }
@@ -39,7 +43,7 @@ public class MainUIController : MonoBehaviour
     {
         for(int i = 0;i < uipages.Count; ++i)
         {
-            uipages[i].gameObject.SetActive(i == GlobalController.Instance.CurrentMainMenuPage);
+            uipages[i].gameObject.SetActive(i == PlayerPrefs.GetInt("page", 0));
         }
     }
 }
