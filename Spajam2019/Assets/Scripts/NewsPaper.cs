@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 public class NewsPaper : MonoBehaviour
 {
@@ -51,6 +53,7 @@ public class NewsPaper : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(requestTweet());
     }
 
     // Update is called once per frame
@@ -65,6 +68,35 @@ public class NewsPaper : MonoBehaviour
 //                StockManager.Instance.CurrentMainMenuPage = 5;
                 SceneManager.LoadScene("MainScene");
             }
+        }
+    }
+
+    private IEnumerator requestTweet()
+    {
+        while (true) {
+            using (UnityWebRequest www = UnityWebRequest.Get("https://m6ks7s23ea.execute-api.ap-northeast-1.amazonaws.com/spajam2019/twitter?q=%E6%80%96%E3%81%84%E8%A9%B1"))
+            {
+                yield return www.Send();
+
+                if (www.isNetworkError || www.isHttpError)
+                {
+                    Debug.Log(www.error);
+                }
+                else
+                {
+                    // Show results as text
+                    Debug.Log(www.downloadHandler.text);
+                    List<Tweet> tweets = JsonConvert.DeserializeObject<List<Tweet>>(www.downloadHandler.text);
+                    if(tweets.Count > 0)
+                    {
+                        System.Random rand = new System.Random();
+                        int randNum = rand.Next(tweets.Count);
+                        newsPaperText.text = tweets[randNum].text;
+                        SplitText();
+                    }
+                }
+            }
+            yield return new WaitForSeconds(3f);
         }
     }
 }

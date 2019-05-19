@@ -12,5 +12,5 @@ exports.handler = async (event, context) => {
     path: "search/tweets",
     params: Object.assign({ count: 100 }, event)
   })
-  return result;
+  return result.data.statuses;
 };
