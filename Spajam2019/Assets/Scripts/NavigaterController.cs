@@ -9,15 +9,14 @@ public class NavigaterController : MonoBehaviour
 
     void Start()
     {
-        
+        Transform cameraTransform = Camera.main.transform;
+        navigaterCharacter.transform.position = cameraTransform.position - characterPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
         Transform cameraTransform = Camera.main.transform;
-        navigaterCharacter.transform.position = cameraTransform.position - characterPosition;
-        
         navigaterCharacter.transform.LookAt(new Vector3(cameraTransform.position.x, navigaterCharacter.transform.position.y, cameraTransform.position.z));
     }
 }
