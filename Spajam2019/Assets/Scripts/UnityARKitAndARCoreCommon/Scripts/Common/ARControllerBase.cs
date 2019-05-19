@@ -16,7 +16,8 @@ namespace ARKitAndARCoreCommon
 
         protected GameObject pointCloudObj;
         protected Camera mainCamera;
-        protected List<NewsPaper> appearedNewsPaper = new List<NewsPaper>();
+        //protected List<NewsPaper> appearedNewsPaper = new List<NewsPaper>();
+        protected NewsPaper appearingNewsPaper = null;
 
         protected virtual void Awake()
         {
@@ -45,8 +46,11 @@ namespace ARKitAndARCoreCommon
 
         protected virtual void AppearNewsPaper(GameObject root)
         {
-            NewsPaper newsPaper = Util.InstantiateTo<NewsPaper>(root, newsPaperPrefab);
-            appearedNewsPaper.Add(newsPaper);
+            if(appearingNewsPaper == null)
+            {
+                appearingNewsPaper = Util.InstantiateTo<NewsPaper>(root, newsPaperPrefab);
+                appearingNewsPaper.Scaleing();
+            }
         }
 
         public static GameObject CreateAnchor(Vector3 pos, Quaternion rotate)

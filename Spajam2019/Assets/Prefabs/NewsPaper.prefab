@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3565855002437395441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
   m_Children:
   - {fileID: 6753622594180375099}
   m_Father: {fileID: 0}
@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newsPaperText: {fileID: 1562525689170145761}
+  defaultScale: {x: 0.05, y: 0.1, z: 0.1}
+  splitByteCount: 15
 --- !u!1 &7576379432682003340
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,13 +186,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576379432682003340}
-  m_Text: 'HelloWorldHello
-
-    HelloWorldHello
-
-    HelloWorldHello
-
-    HelloWorldHello
+  m_Text: 'HelloWorldHelloHelloWorldHelloHelloWorldHelloHelloWorldHello
 
     HelloWorldHello'
   m_OffsetZ: 0
