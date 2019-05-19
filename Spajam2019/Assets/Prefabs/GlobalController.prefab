@@ -46,3 +46,4 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   locationLoaderPrefab: {fileID: 2933583177172245999, guid: 36beaa692f7a24dbb91cd67382b7feb5,
     type: 3}
+  CurrentMainMenuPage: 0

@@ -189,9 +189,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576379432682003340}
-  m_Text: 'HelloWorldHelloHelloWorldHelloHelloWorldHelloHelloWorldHello
-
-    HelloWorldHello'
+  m_Text: "#\u3068\u3061\u30AF\u30EB\u202C\n\u202A\u546A\u308F\u308C\u305F\u6905\u5B50\u306B\u5EA7\u3063\u305F\u3068\u305F\u3093\u5E78\u305B\u306B\u7761\u7720\u3057\u3066\u3057\u307E\u3044\u307E\u3057\u305F...\u202C"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

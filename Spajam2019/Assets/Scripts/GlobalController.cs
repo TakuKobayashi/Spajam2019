@@ -12,7 +12,7 @@ public class GlobalController : SingletonBehaviour<GlobalController>
     // Start is called before the first frame update
     void Awake()
     {
-        Util.InstantiateTo(this.gameObject, locationLoaderPrefab);
+        //Util.InstantiateTo(this.gameObject, locationLoaderPrefab);
     }
 
     // Update is called once per frame
