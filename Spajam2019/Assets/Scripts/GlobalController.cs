@@ -6,6 +6,9 @@ using Tochikuru;
 public class GlobalController : SingletonBehaviour<GlobalController>
 {
     [SerializeField] GameObject locationLoaderPrefab;
+
+    public int CurrentMainMenuPage = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
